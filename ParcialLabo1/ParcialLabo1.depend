@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1570754467 source:/home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/main.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+
+1570749928 /home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/Cliente.h
+
+1570744133 /home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/utn.h
+
+1570753957 source:/home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/Cliente.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+
+1570747911 source:/home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1570754394 source:/home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/Pedidos.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+
+1570752280 /home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/Pedidos.h
+
