@@ -4,6 +4,7 @@
 #include "utn.h"
 #include "Cliente.h"
 #include "Pedidos.h"
+#include "Informes.h"
 //#include "Entidad.h"
 
 #define cantidad 3
@@ -35,7 +36,18 @@ int main(void)
             printf("\n7- IMPRIMIR CLIENTES ");
             printf("\n8- IMPRIMIR PEDIDOS PENDIENTES ");
             printf("\n9- IMPRIMIR PEDIDOS PROCESADOS ");
-            printf("\n10- SALIR ");
+            printf("\n--------------------------------");
+            printf("\n\nINFORMES:");
+            printf("\n10- CLIENTE CON MAS PEDIDOS PENDIENTES");
+            printf("\n11- CLIENTE CON MAS PEDIDOS COMPLETADOS");
+            printf("\n12- CLIENTE CON MAS PEDIDOS");
+            printf("\n13- CLIENTE QUE RECICLO MAS KILOS");
+            printf("\n14- CLIENTE QUE RECICLO MENOS KILOS");
+            printf("\n15- CANTIDAD DE CLIENTES QUE RECICLARON MAS DE 1000 KG");
+            printf("\n16- CANTIDAD DE CLIENTES QUE RECICLARON MENOS DE 100 KG");
+            printf("\n17- IMPRIMIR PEDIDOS COMPLETADOS");
+            printf("\n18- IMPRIMIR LOCALIDAD CON CANTIDAD DE PEDIDOS PENDIENTES");
+            printf("\n20- SALIR ");
 	        printf("\n\nIngrese una opcion: ");
             scanf("%d",&opcion);
 	        switch(opcion)
@@ -144,9 +156,99 @@ int main(void)
 	                break;
 
                 case 10:
+	                 if(insert==1)
+                    {
+
+                       //clienteMaxMinKilos(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+
+
+
+
+                case 13:
+	                 if(insert==1)
+                    {
+
+                       clienteMaxKilos(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+
+	            case 14:
+	                 if(insert==1)
+                    {
+
+                       clienteMinKilos(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+
+                 case 15:
+	                 if(insert==1)
+                    {
+
+                       clienteMaxReciclo(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+                case 16:
+	                 if(insert==1)
+                    {
+
+                       clienteMinReciclo(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+                 case 17:
+	                 if(insert==1)
+                    {
+
+                       pedidosProcesados(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+                case 18:
+	                 if(insert==1)
+                    {
+
+                       localidadPedidos(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+                case 20:
 	                printf("\nFin del Programa");
 	        }
-	    }while(opcion!=10);
+	    }while(opcion!=20);
 	    return 0;
 
 }

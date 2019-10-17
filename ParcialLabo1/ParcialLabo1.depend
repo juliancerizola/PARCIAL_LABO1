@@ -34,3 +34,50 @@
 
 1570752280 /home/alumno/Descargas/TomasCostilla/ClasesProgramacion/ParcialLabo1/Pedidos.h
 
+1571348173 source:/home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/Cliente.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+
+1571348173 /home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/utn.h
+
+1571348173 /home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/Cliente.h
+
+1571355630 source:/home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/main.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+	"Informes.h"
+
+1571348173 /home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/Pedidos.h
+
+1571348173 source:/home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/Pedidos.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+
+1571348573 source:/home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1571355609 /home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/Informes.h
+
+1571355674 source:/home/alumno/Descargas/TomasCostilla/PARCIAL_LABO1/ParcialLabo1/Informes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+	"Informes.h"
+
