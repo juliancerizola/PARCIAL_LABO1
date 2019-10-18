@@ -60,6 +60,7 @@ int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size)
     char pedido[] = {"PENDIENTE"};
     int auxCli = 0;
     int auxPed = 0;
+    int mayor = 0;
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
@@ -73,7 +74,7 @@ int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size)
         {
             for(i=0;i<size;i++)
             {
-                if(array[i].CliID == id && strcmp(array[i].Pedsts,pedido)==0)
+                if(strcmp(array[i].Pedsts,pedido)==0)
                 {
                   //auxCli = array[i].CliID;
                   auxPed = auxPed + 1;
@@ -94,8 +95,12 @@ int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size)
     return retorno;
 }
 
-int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size)
 
+
+
+
+
+int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size)
 {
     int retorno = -1;
     int cantidadpedidos = 0;
@@ -103,21 +108,23 @@ int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size)
     int i;
     int posicion;
     char pedido[] = {"PENDIENTE"};
-    int auxCli = 0;
+    int maxPendientes = 0;
     int auxCantidad = 0;
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
         for(i=0;i<size;i++)
         {
-           if(strcmp(array[i].Pedsts,pedido)==0)
-           {
-               auxCantidad = auxCantidad + 1;
-           }
+           //cantidadpedidos(array,arraycli,size)
+          // if(strcmp(array[i].Pedsts,pedido)==0 && )
+          // {
+          //     auxCantidad = auxCantidad + 1;
+
+          // }
 
 
 
-        }
+        //}
         printf("\nHay %d",auxCantidad);
         retorno=0;
     }
@@ -323,6 +330,10 @@ int localidadPedidos(Pedido array[],Cliente arraycli[],int size)
                     }
 
                 }
+                else{
+                    printf("\nNo existe esa localidad!");
+
+                }
 
             }
         }
@@ -334,26 +345,105 @@ int localidadPedidos(Pedido array[],Cliente arraycli[],int size)
 
     }
 
-    int localidadPedidos(Pedido array[],Cliente arraycli[],int size)
+int totalClientes(Pedido array[],Cliente arraycli[],int size)
 {
     int retorno = -1;
     //char localidadaux[30];
     int i;
+    int sumCantidad = 0;
+    int cantidadClientes = 0;
+    int total = 0;
+
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
+        for(i=0;i<size;i++)
+        {
 
+            if(array[i].IsEmpty==1)
+                continue;
+            else
+            {
+                 sumCantidad+=array[i].cantidad;
+                 cantidadClientes = cantidadClientes + 1;
 
+            }
 
+        }
 
+        total = sumCantidad/cantidadClientes;
 
     }
 
-           // printf("\nLa localidad tiene %d pedidos en estado PENDIENTE",contarpedidos);
-
+           printf("\nPromedio total: %d",total);
             retorno=0;
             return retorno;
 
-    }
+}
+
+int cantidadKilosTotales(Pedido array[],Cliente arraycli[],int size)
+{
+    int retorno = -1;
+    int cuitingresado = 0;
+    int i;
+    int j;
+    int contarpedidos = 0;
+    //int tipoplastico;
+    int idCliente;
+    int totalHDPE = 0;
+    int totalLDPE = 0;
+    int totalPP = 0;
+
+
+    if(array!=NULL && arraycli!=NULL && size>=0)
+    {
+       //printf("\n1-Tipo de plastico HDPE");
+       //printf("\n2-Tipo de plastico LDPE");
+       //printf("\n3-Tipo de plastico PP");
+       //printf("\n4-Elija un tipo de Plastico: ");
+       //scanf("%d",&tipoplastico);
+        printf("\nIngrese una CUIT: ");
+        scanf("%d",&cuitingresado);
+
+            for(i=0;i<size;i++)
+            {
+                if(arraycli[i].cuit==cuitingresado)
+                {
+                     idCliente = arraycli[i].CliID;
+                    for(j=0;j<size;j++)
+                    {
+                        if(array[j].CliID == idCliente)
+                        {
+                            //contarpedidos = contarpedidos + 1;
+                            totalHDPE = array[j].HDPE;
+                            totalLDPE = array[j].LDPE;
+                            totalPP = array[j].PP;
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    printf("\nEste cuit no existe!");
+                    retorno = -1;
+
+                }
+
+            }
+            printf("\nTotal HDPE ",totalHDPE);
+            printf("\nTotal LDPE ",totalLDPE);
+            printf("\nTotal PP ",totalPP);
+            retorno=0;
+
+
+        }
+        return retorno;
+
+ }
+
+
+
 
 
 

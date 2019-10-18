@@ -38,7 +38,7 @@ int main(void)
             printf("\n9- IMPRIMIR PEDIDOS PROCESADOS ");
             printf("\n--------------------------------");
             printf("\n\nINFORMES:");
-            printf("\n10- CLIENTE CON MAS PEDIDOS PENDIENTES");
+            printf("\n\n10- CLIENTE CON MAS PEDIDOS PENDIENTES");
             printf("\n11- CLIENTE CON MAS PEDIDOS COMPLETADOS");
             printf("\n12- CLIENTE CON MAS PEDIDOS");
             printf("\n13- CLIENTE QUE RECICLO MAS KILOS");
@@ -47,7 +47,9 @@ int main(void)
             printf("\n16- CANTIDAD DE CLIENTES QUE RECICLARON MENOS DE 100 KG");
             printf("\n17- IMPRIMIR PEDIDOS COMPLETADOS");
             printf("\n18- IMPRIMIR LOCALIDAD CON CANTIDAD DE PEDIDOS PENDIENTES");
-            printf("\n20- SALIR ");
+            printf("\n19- IMPRIMIR PROMEDIO");
+            printf("\n20- IMPRIMIR TOTALES DE LOS TOPOS DE PLASTICO");
+            printf("\n21- SALIR ");
 	        printf("\n\nIngrese una opcion: ");
             scanf("%d",&opcion);
 	        switch(opcion)
@@ -245,10 +247,35 @@ int main(void)
                         msgError();
                       }
 	                break;
+                 case 19:
+	                 if(insert==1)
+                    {
+
+                       totalClientes(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+
                 case 20:
+	                 if(insert==1)
+                    {
+
+                       cantidadKilosTotales(arrayPedido,arrayCliente,cantidad);
+                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+                case 21:
 	                printf("\nFin del Programa");
 	        }
-	    }while(opcion!=20);
+	    }while(opcion!=21);
 	    return 0;
 
 }
