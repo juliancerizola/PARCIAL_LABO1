@@ -81,3 +81,50 @@
 	"Pedidos.h"
 	"Informes.h"
 
+1571786888 source:d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\cliente.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+
+1571783616 d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\utn.h
+
+1571783616 d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\cliente.h
+
+1571785110 source:d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\main.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+	"Informes.h"
+
+1571783616 d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\pedidos.h
+
+1571785088 d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\informes.h
+
+1571786505 source:d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\pedidos.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+
+1571783616 source:d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1571786092 source:d:\proyectos & clases - utn\parcial 1\parcial_labo1\parciallabo1\informes.c
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	"Cliente.h"
+	"Pedidos.h"
+	"Informes.h"
+

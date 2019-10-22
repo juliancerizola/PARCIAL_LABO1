@@ -7,60 +7,16 @@
 #include "Informes.h"
 
 
-/*int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size)
-{
-    int retorno=-1;
-    int i;
-    int j;
-    int cantidadped = 0;
-    char pedido[] = {"PENDIENTE"};
-    if(array!=NULL && arraycli!=NULL && size>=0)
-    {
-       // printf("\n Ped.NRO    CliID    Estado del PEDIDO   Cantidad ");
-       // printf("\n  \tPedido    ID Cliente       Nombre      cuit    Direccion     Localidad      Estado del PEDIDO  cantidad pedidos");
-        for(i=0;i<size;i++)
-        {
-            if(array[i].IsEmpty==1)
-                continue;
-            else
-            {
-                if(strcmp(array[i].Pedsts,pedido)==0)
-                {
-                       cantidadped = cantidadped + 1;
-                        for(j=0;j<size;j++)
-                        {
-                             if(array[j].IsEmpty==1)
-                                continue;
-                            else
-                            {
-                                printf("\n    \t%d        %d         %s         %d        %s          %s          %s",
-                                   array[i].PedID,arraycli[j].CliID,arraycli[j].Nombre,arraycli[j].cuit,arraycli[j].Direccion,arraycli[j].Localidad,array[i].Pedsts,cantidadped);
-                            }
-
-                        }
 
 
-                    }
-
-                }
-            }
-
-        }
-        retorno=0;
-
-    return retorno;
-}*/
-
-int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size)
+/*int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size)
 {
     int retorno = -1;
     int id;
     int i;
     int posicion;
     char pedido[] = {"PENDIENTE"};
-    int auxCli = 0;
     int auxPed = 0;
-    int mayor = 0;
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
@@ -95,7 +51,7 @@ int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size)
     return retorno;
 }
 
-
+*/
 
 
 
@@ -103,62 +59,115 @@ int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size)
 int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size)
 {
     int retorno = -1;
-    int cantidadpedidos = 0;
-    int id;
-    int i;
-    int posicion;
+    int i,j;
     char pedido[] = {"PENDIENTE"};
-    int maxPendientes = 0;
-    int auxCantidad = 0;
+    int auxCliID;
+    int contMax = 0;
+    int mayor = 0;
+    int idMax = 0;
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
         for(i=0;i<size;i++)
         {
-           //cantidadpedidos(array,arraycli,size)
-          // if(strcmp(array[i].Pedsts,pedido)==0 && )
-          // {
-          //     auxCantidad = auxCantidad + 1;
+            auxCliID = arraycli[i].CliID;
+            for(j=0;j<size;j++)
+            {
+                if(strcmp(array[i].Pedsts,pedido)==0)
+                {
+                    contMax = contMax + 1;
+                }
 
-          // }
+            }
+            if(contMax>mayor)
+            {
+                mayor = contMax;
+                idMax = auxCliID;
+            }
+
+        }
+        retorno = 0;
+        printf("\nEl ID con mas pedidos pendientes es: %d",idMax);
 
 
-
-        //}
-        printf("\nHay %d",auxCantidad);
-        retorno=0;
     }
       //retorno=0;
     return retorno;
 }
 
-int clienteMaxKilos(Pedido array[],Cliente arraycli[],int size)
+
+
+int clienteMaxPedidosCompletados(Pedido array[],Cliente arraycli[],int size)
 {
     int retorno = -1;
-    int cantidadpedidos = 0;
-    int id;
-    int i;
-    int posicion;
-    char pedido[] = {"PENDIENTE"};
-    int auxCli;
-    int maxKilos = 0;
+    int i,j;
+    char pedido[] = {"PROCESADO"};
+    int auxCliID;
+    int contMax = 0;
+    int mayor = 0;
+    int idMax = 0;
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
         for(i=0;i<size;i++)
         {
-            if(array[i].cantidad > maxKilos)
+            auxCliID = arraycli[i].CliID;
+            for(j=0;j<size;j++)
             {
-                maxKilos = array[i].cantidad;
-                auxCli = array[i].CliID;
+                if(strcmp(array[i].Pedsts,pedido)==0)
+                {
+                    contMax = contMax + 1;
+                }
+
+            }
+            if(contMax>mayor)
+            {
+                mayor = contMax;
+                idMax = auxCliID;
+            }
+
+        }
+        retorno = 0;
+        printf("\nEl ID con mas pedidos PROCESADOS es: %d",idMax);
+
+
+    }
+      //retorno=0;
+    return retorno;
+}
+
+
+
+
+int clienteMaxKilos(Pedido array[],Cliente arraycli[],int size)
+{
+    int retorno = -1;
+    int i;
+    char pedido[] = {"PROCESADO"};
+    int auxCli;
+    int maxKilos = 0;
+    int sumaCantidad = 0;
+
+    if(array!=NULL && arraycli!=NULL && size>=0)
+    {
+        for(i=0;i<size;i++)
+        {
+            if(array[i].IsEmpty==1)
+                continue;
+          else if(strcmp(array[i].Pedsts,pedido)==0)
+            {
+                sumaCantidad += array[i].HDPE + array[i].LDPE + array[i].PP;
+                if(sumaCantidad > maxKilos)
+                {
+                    maxKilos = sumaCantidad;
+                    auxCli = array[i].CliID;
+                }
             }
 
         }
         printf("\nEl cliente con mas kilos es: %d y la cantidad mayor fue: %d",auxCli,maxKilos);
+        sumaCantidad = 0;
         retorno=0;
-
-
-
     }
       //retorno=0;
     return retorno;
@@ -167,22 +176,26 @@ int clienteMaxKilos(Pedido array[],Cliente arraycli[],int size)
 int clienteMinKilos(Pedido array[],Cliente arraycli[],int size)
 {
     int retorno = -1;
-    int cantidadpedidos = 0;
-
+    char pedido[] = {"PROCESADO"};
     int i;
-
     int auxCli;
-    int minKilos = 0;
+    int minKilos;
+    int minCantidad;
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
         for(i=0;i<size;i++)
         {
-            minKilos = array[i].cantidad;
-            if(array[i].cantidad < minKilos)
+            if(array[i].IsEmpty==1)
+                continue;
+          else if(strcmp(array[i].Pedsts,pedido)==0)
             {
-                minKilos = array[i].cantidad;
-                auxCli = array[i].CliID;
+                minCantidad += array[i].HDPE + array[i].LDPE + array[i].PP;
+                if(minCantidad < minKilos)
+                {
+                    minKilos = minCantidad;
+                    auxCli = array[i].CliID;
+                }
             }
 
         }
@@ -199,8 +212,9 @@ int clienteMinKilos(Pedido array[],Cliente arraycli[],int size)
 int clienteMaxReciclo(Pedido array[],Cliente arraycli[],int size)
 {
 
-     int retorno = -1;
+    int retorno = -1;
     int cantidadpedidos = 0;
+    char pedido[] = {"PROCESADO"};
     int i;
     int maxReciclo = 1000;
     int contar = 0;
@@ -208,13 +222,18 @@ int clienteMaxReciclo(Pedido array[],Cliente arraycli[],int size)
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
 
-
         for(i=0;i<size;i++)
         {
-                if(array[i].cantidad > maxReciclo)
+            if(array[i].IsEmpty==1)
+                continue;
+           else if(strcmp(array[i].Pedsts,pedido)==0)
             {
-                contar = contar + 1;
+                if(array[i].cantidad > maxReciclo)
+                {
+                    contar = contar + 1;
+                }
             }
+
         }
         printf("\nLa cantidad de clientes mayores a 1000 son: %d",contar);
         retorno=0;
@@ -232,7 +251,6 @@ int clienteMinReciclo(Pedido array[],Cliente arraycli[],int size)
 {
 
     int retorno = -1;
-    int cantidadpedidos = 0;
     int i;
     int minReciclo = 100;
     int contar = 0;
@@ -385,9 +403,7 @@ int cantidadKilosTotales(Pedido array[],Cliente arraycli[],int size)
     int retorno = -1;
     int cuitingresado = 0;
     int i;
-    int j;
-    int contarpedidos = 0;
-    //int tipoplastico;
+    int j;    //int tipoplastico;
     int idCliente;
     int totalHDPE = 0;
     int totalLDPE = 0;

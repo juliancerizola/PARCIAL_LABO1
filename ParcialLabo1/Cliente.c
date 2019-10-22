@@ -107,7 +107,7 @@ int altaCliente(Cliente array[], int size, int* contadorID)
             array[posicion].CliID=*contadorID;                                                       //campo ID
             array[posicion].IsEmpty=0;
             printf("\n\nIngrese un nombre: ");
-            //fgets(array[posicion].Nombre);
+            //fgets(array[posicion].Nombre,40,stdin);
             scanf("%s",&array[posicion].Nombre);
 
             printf("\nIngrese el CUIT: ");
@@ -126,7 +126,12 @@ int altaCliente(Cliente array[], int size, int* contadorID)
             retorno=0;
         }
     }
-    printf("\nSe dio de alta correctamente!");
+    if(retorno==0)
+    {
+        printf("\nSe dio de alta correctamente!");
+        printf("\n\nCliid: %d\nNombre: %s\nCUIT: %d\nDireccion: %s\nLocalidad: %s",array[posicion].CliID,array[posicion].Nombre,array[posicion].cuit,array[posicion].Direccion,array[posicion].Localidad);
+    }
+
     return retorno;
 }
 

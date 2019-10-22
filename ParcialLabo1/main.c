@@ -161,8 +161,20 @@ int main(void)
 	                 if(insert==1)
                     {
 
-                       //clienteMaxMinKilos(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
+                       clienteMaxPedidosPendientes(arrayPedido,arrayCliente,cantidad);
+                    }
+                     else
+                     {
+                        msgError();
+                      }
+	                break;
+
+
+                case 11:
+	                 if(insert==1)
+                    {
+
+                       clienteMaxPedidosCompletados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {

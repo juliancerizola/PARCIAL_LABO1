@@ -91,7 +91,11 @@ int crearPedido(Pedido array[], int size, int* contadorID)
             retorno=0;
         }
     }
-    printf("\nSe dio de alta correctamente!");
+    if(retorno==0)
+    {
+        printf("\nSe dio de alta correctamente!");
+    }
+
     return retorno;
 }
 
@@ -188,7 +192,7 @@ int listarPedidosClientes(Pedido array[],Cliente arraycli[],int size)
                        cantidadped = cantidadped + 1;
                         for(j=0;j<size;j++)
                         {
-                             if(array[j].IsEmpty==1)
+                             if(arraycli[j].IsEmpty==1)
                                 continue;
                             else
                             {
@@ -231,7 +235,7 @@ int listarPedidosClientesPendientes(Pedido array[],Cliente arraycli[],int size)
 
                         for(j=0;j<size;j++)
                         {
-                             if(array[j].IsEmpty==1)
+                             if(arraycli[j].IsEmpty==1)
                                 continue;
                             else
                             {
@@ -274,7 +278,7 @@ int listarPedidosClientesProcesados(Pedido array[],Cliente arraycli[],int size)
 
                         for(j=0;j<size;j++)
                         {
-                             if(array[j].IsEmpty==1)
+                             if(arraycli[j].IsEmpty==1)
                                 continue;
                             else
                             {
