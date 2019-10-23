@@ -213,7 +213,6 @@ int clienteMaxReciclo(Pedido array[],Cliente arraycli[],int size)
 {
 
     int retorno = -1;
-    int cantidadpedidos = 0;
     char pedido[] = {"PROCESADO"};
     int i;
     int maxReciclo = 1000;
@@ -254,16 +253,22 @@ int clienteMinReciclo(Pedido array[],Cliente arraycli[],int size)
     int i;
     int minReciclo = 100;
     int contar = 0;
+    char pedido[] = {"PROCESADO"};
+
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
-
-
         for(i=0;i<size;i++)
         {
-                if(array[i].cantidad < minReciclo)
+             if(array[i].IsEmpty==1)
+                continue;
+           else if(strcmp(array[i].Pedsts,pedido)==0)
             {
-                contar = contar + 1;
+                if(array[i].cantidad > minReciclo)
+                {
+                    contar = contar + 1;
+
+                }
             }
         }
         printf("\nLa cantidad de clientes menores a 100 son: %d",contar);
@@ -284,8 +289,6 @@ int pedidosProcesados(Pedido array[],Cliente arraycli[],int size)
     char pedido[] = {"PROCESADO"};
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
-       // printf("\n Ped.NRO    CliID    Estado del PEDIDO   Cantidad ");
-        printf("\nID PEDIDO\t CUIT\t CANTIDADTOTAL\t");
         for(i=0;i<size;i++)
         {
             if(array[i].IsEmpty==1)
@@ -294,14 +297,13 @@ int pedidosProcesados(Pedido array[],Cliente arraycli[],int size)
             {
                 if(strcmp(array[i].Pedsts,pedido)==0)
                 {
-
                         for(j=0;j<size;j++)
                         {
-                             if(array[j].IsEmpty==1)
+                             if(arraycli[j].IsEmpty==1)
                                 continue;
                             else
                             {
-                                printf("\n%d\t %d\t %d",
+                                printf("\nNum.Pedido: %d\nCUIT del Cliente: %d\nCantidad Total: %d",
                                    array[i].PedID,arraycli[j].cuit,array[i].cantidad);
                             }
 
@@ -405,10 +407,7 @@ int cantidadKilosTotales(Pedido array[],Cliente arraycli[],int size)
     int i;
     int j;    //int tipoplastico;
     int idCliente;
-    int totalHDPE = 0;
-    int totalLDPE = 0;
-    int totalPP = 0;
-
+    int totalKilos = 0;
 
     if(array!=NULL && arraycli!=NULL && size>=0)
     {
@@ -417,12 +416,14 @@ int cantidadKilosTotales(Pedido array[],Cliente arraycli[],int size)
        //printf("\n3-Tipo de plastico PP");
        //printf("\n4-Elija un tipo de Plastico: ");
        //scanf("%d",&tipoplastico);
-        printf("\nIngrese una CUIT: ");
+        printf("\nIngrese un CUIT: ");
         scanf("%d",&cuitingresado);
 
             for(i=0;i<size;i++)
             {
-                if(arraycli[i].cuit==cuitingresado)
+                if(arraycli[i].IsEmpty==1)
+                    continue;
+               else if(arraycli[i].cuit==cuitingresado)
                 {
                      idCliente = arraycli[i].CliID;
                     for(j=0;j<size;j++)
@@ -430,9 +431,8 @@ int cantidadKilosTotales(Pedido array[],Cliente arraycli[],int size)
                         if(array[j].CliID == idCliente)
                         {
                             //contarpedidos = contarpedidos + 1;
-                            totalHDPE = array[j].HDPE;
-                            totalLDPE = array[j].LDPE;
-                            totalPP = array[j].PP;
+                            totalKilos += array[j].HDPE + array[j].LDPE + array[j].PP;
+                            retorno=0;
 
                         }
 
@@ -447,13 +447,13 @@ int cantidadKilosTotales(Pedido array[],Cliente arraycli[],int size)
                 }
 
             }
-            printf("\nTotal HDPE ",totalHDPE);
-            printf("\nTotal LDPE ",totalLDPE);
-            printf("\nTotal PP ",totalPP);
-            retorno=0;
-
-
         }
+
+         if(retorno == 0)
+            {
+                printf("\nEl total de kilos ingresados por el CUIT son: %d",totalKilos);
+
+            }
         return retorno;
 
  }

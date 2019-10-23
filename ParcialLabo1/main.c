@@ -24,7 +24,6 @@ int main(void)
 	InicializaPedido(arrayPedido,cantidad);
 
 	printf("****BIENVENIDO AL SISTEMA*****");
-	//printf("\n\n****** ABM DE  *****");
 	do
 	    {
             printf("\n");
@@ -110,7 +109,7 @@ int main(void)
                         }
                         else
                         {
-                            opcion = 10;
+                            opcion = 21;
                         }
 
                     }
@@ -190,7 +189,6 @@ int main(void)
                     {
 
                        clienteMaxKilos(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
@@ -203,7 +201,6 @@ int main(void)
                     {
 
                        clienteMinKilos(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
@@ -216,7 +213,6 @@ int main(void)
                     {
 
                        clienteMaxReciclo(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
@@ -228,7 +224,6 @@ int main(void)
                     {
 
                        clienteMinReciclo(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
@@ -240,7 +235,6 @@ int main(void)
                     {
 
                        pedidosProcesados(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
@@ -252,7 +246,6 @@ int main(void)
                     {
 
                        localidadPedidos(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
@@ -264,7 +257,6 @@ int main(void)
                     {
 
                        totalClientes(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
@@ -277,7 +269,6 @@ int main(void)
                     {
 
                        cantidadKilosTotales(arrayPedido,arrayCliente,cantidad);
-                      //listarPedidosClientesProcesados(arrayPedido,arrayCliente,cantidad);
                     }
                      else
                      {
