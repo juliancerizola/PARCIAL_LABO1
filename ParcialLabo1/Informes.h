@@ -4,6 +4,7 @@
 int cantidadpedidos(Pedido array[],Cliente arraycli[],int size);
 
 int clienteMaxPedidosCompletados(Pedido array[],Cliente arraycli[],int size);
+int clienteMaxPedidos(Pedido array[],Cliente arraycli[],int size);
 
 int calculaCantPedCli(Pedido array[],Cliente arraycli[],int size);
 int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size);

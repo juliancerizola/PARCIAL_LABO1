@@ -53,6 +53,45 @@
 
 */
 
+int clienteMaxPedidos(Pedido array[],Cliente arraycli[],int size)
+{
+    int retorno = -1;
+    int i,j;
+    int auxCliID;
+    int contMax = 0;
+    int mayor = 0;
+    int idMax = 0;
+
+    if(array!=NULL && arraycli!=NULL && size>=0)
+    {
+        for(i=0;i<size;i++)
+        {
+            auxCliID = arraycli[i].CliID;
+            for(j=0;j<size;j++)
+            {
+                if(array[j].CliID == auxCliID)
+                {
+                    contMax = contMax + 1;
+                }
+
+            }
+            if(contMax>mayor)
+            {
+                mayor = contMax;
+                idMax = auxCliID;
+            }
+
+        }
+        retorno = 0;
+        printf("\nEl ID con mas pedidos pendientes es: %d",idMax);
+
+
+    }
+
+      //retorno=0;
+    return retorno;
+}
+
 
 
 
@@ -73,7 +112,7 @@ int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size)
             auxCliID = arraycli[i].CliID;
             for(j=0;j<size;j++)
             {
-                if(strcmp(array[i].Pedsts,pedido)==0)
+                if(strcmp(array[j].Pedsts,pedido)==0 && array[j].CliID == auxCliID)
                 {
                     contMax = contMax + 1;
                 }
@@ -91,6 +130,7 @@ int clienteMaxPedidosPendientes(Pedido array[],Cliente arraycli[],int size)
 
 
     }
+
       //retorno=0;
     return retorno;
 }
@@ -114,7 +154,7 @@ int clienteMaxPedidosCompletados(Pedido array[],Cliente arraycli[],int size)
             auxCliID = arraycli[i].CliID;
             for(j=0;j<size;j++)
             {
-                if(strcmp(array[i].Pedsts,pedido)==0)
+                if(strcmp(array[j].Pedsts,pedido)==0 && array[j].CliID == auxCliID )
                 {
                     contMax = contMax + 1;
                 }
