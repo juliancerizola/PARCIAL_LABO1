@@ -546,4 +546,18 @@ if(this!=NULL && pFunc !=NULL &&  (order == 0 || order == 1) )
     return returnAux;
 
 }
+LinkedList* ll_filter(LinkedList *this, int (*pFunc)(void *element)) {
+	void *pElement;
+	LinkedList *aux;
+	aux = ll_newLinkedList();
+	int i;
+	for (i = 0; i < ll_len(this); i++) {
+		pElement = ll_get(this, i);
+		if (pFunc(pElement) == 1) {
 
+			ll_add(aux, pElement);
+		}
+
+	}
+	return aux;
+}

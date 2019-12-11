@@ -43,6 +43,9 @@ int msg(int x){
 		printf("\Ha ocurrido un error\n");
 		retorno = 0;
 		break;
+	case 3:
+		printf("\nHa salido del sistema");
+		break;
 	}
 	return retorno;
 }

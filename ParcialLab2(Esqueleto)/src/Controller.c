@@ -15,7 +15,7 @@
  * \return int
  *
  */
-int controller_loadFromText(char* path , LinkedList* Entidad)
+int controller_loadFromText(char* path , LinkedList* ArrayEntidad)
 {
 
 	FILE *pArchivo;
@@ -27,6 +27,7 @@ int controller_loadFromText(char* path , LinkedList* Entidad)
 		retorno=-1;
 	}
 	//parser_EmployeeFromText(pArchivo,Entidad);
+	parser_EmployeeFromText(pArchivo,ArrayEntidad);
     fclose(pArchivo);
 
     return retorno;
@@ -39,7 +40,7 @@ int controller_loadFromText(char* path , LinkedList* Entidad)
  * \return int
  *
  */
-int controller_loadFromBinary(char* path , LinkedList* Entidad)
+int controller_loadFromBinary(char* path , LinkedList* ArrayEntidad)
 {
 
 	/*FILE *pArchivo;
@@ -64,7 +65,7 @@ int controller_loadFromBinary(char* path , LinkedList* Entidad)
  * \return int
  *
  */
-int controller_addEmployee(LinkedList* Entidad)
+int controller_addEmployee(LinkedList* ArrayEntidad)
 {
     /*int retorno = -1;
     if(pideDatosAlta(pArrayListEmployee)==0)
@@ -81,7 +82,7 @@ int controller_addEmployee(LinkedList* Entidad)
  * \return int
  *
  */
-int controller_editEmployee(LinkedList* Entidad)
+int controller_editEmployee(LinkedList* ArrayEntidad)
 {
     int retorno = -1;
    /* if(pArrayListEmployee!=NULL)
@@ -101,7 +102,7 @@ int controller_editEmployee(LinkedList* Entidad)
  * \return int
  *
  */
-int controller_removeEmployee(LinkedList* Entidad)
+int controller_removeEmployee(LinkedList* ArrayEntidad)
 {
     int retorno=-1;
    /* if(pArrayListEmployee!=NULL)
@@ -121,7 +122,7 @@ int controller_removeEmployee(LinkedList* Entidad)
  * \return int
  *
  */
-int controller_ListEmployee(LinkedList* Entidad)
+int controller_ListEmployee(LinkedList* ArrayEntidad)
 {
     /*Employee* pAux;
     int retorno=-1;
@@ -164,7 +165,7 @@ int controller_ListEmployee(LinkedList* Entidad)
  * \return int
  *
  */
-int controller_sortEmployee(LinkedList* Entidad)
+int controller_sortEmployee(LinkedList* ArrayEntidad)
 {
     int retorno = -1;
     /*if(pArrayListEmployee!=NULL)
@@ -182,7 +183,7 @@ int controller_sortEmployee(LinkedList* Entidad)
  * \return int
  *
  */
-int controller_saveAsText(char* path, LinkedList* Entidad)
+int controller_saveAsText(char* path, LinkedList* ArrayEntidad)
 {
     int retorno=-1;
 
@@ -209,9 +210,9 @@ int controller_saveAsText(char* path, LinkedList* Entidad)
             employee_getSueldo(auxEmp,&auxSueldo);
 
             fprintf(pFile,"%d,%s,%d,%d\n",auxId,auxNombre,auxHoras,auxSueldo);
+            retorno=0;
         }
         printf("\nArchivo guardado en modo texto correctamente!\n");
-        retorno=0;
         fclose(pFile);
     }*/
     return retorno;
@@ -224,7 +225,7 @@ int controller_saveAsText(char* path, LinkedList* Entidad)
  * \return int
  *
  */
-int controller_saveAsBinary(char* path , LinkedList* Entidad)
+int controller_saveAsBinary(char* path , LinkedList* ArrayEntidad)
 {
     /*FILE *pArchivo;
     Employee* pAux;

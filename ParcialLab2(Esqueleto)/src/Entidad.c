@@ -61,7 +61,7 @@ int entidad_getId(Entidad* this,int* id)
 	int retorno = -1;
 	if(this!=NULL && id!=NULL)
 	{
-		id=this->Id;
+		*id=this->Id;
 		retorno = 0;
 	}
 	return retorno;
@@ -134,4 +134,49 @@ int employee_getSueldo(Employee* this,int* sueldo)
 		retorno = 0;
 	}
     return retorno;
+}*/
+
+/*int funCritDias(void *pElement) {
+	Cachorros *arg1 = (Cachorros*) pElement;
+
+	int dias;
+	int retorno;
+
+	cachorros_getDias(arg1, &dias);
+
+	if (dias > 45) {
+		retorno = 1;
+	} else {
+		retorno = 0;
+	}
+	return retorno;
+}
+int funCritMacho(void *pElement) {
+Cachorros* aux;
+
+aux=(Cachorros*)pElement;
+
+	int retorno;
+	if (strcmp(aux->sexo, "M") == 0) {
+		retorno = 1;
+	} else {
+		retorno = 0;
+	}
+
+	return retorno;
+}
+int funCritRaza(void *pElement) {
+	Cachorros* aux;
+
+	aux=(Cachorros*)pElement;
+
+	int retorno;
+
+	if (strcmp(aux->raza,"Callejero") == 0) {
+
+		retorno = 1;
+	} else {
+		retorno = 0;
+	}
+	return retorno;
 }*/

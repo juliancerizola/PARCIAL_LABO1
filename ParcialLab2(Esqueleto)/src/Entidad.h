@@ -33,6 +33,9 @@ int entidad_getHorasTrabajadas(Entidad* this,int* horasTrabajadas);
 int entidad_setSueldo(Entidad* this,int sueldo);
 int entidad_getSueldo(Entidad* this,int* sueldo);*/
 
+/*int funCritDias(void* pElement);
+int funCritMacho(void* pElement);
+int funCritRaza(void* pElement);*/
 
 
 

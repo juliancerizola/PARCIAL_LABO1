@@ -14,8 +14,8 @@
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* EntidadArray)
 {
-	Entidad* pAux;
-	/*char bufId[20];
+	/*Entidad* pAux;
+	char bufId[20];
 	char bufNombre[20];
 	char bufHorasTrabajadas[20];
 	char bufSueldo[20];
@@ -26,9 +26,10 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* EntidadArray)
 		fflush(stdout);
 		fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufId,bufNombre,bufHorasTrabajadas,bufSueldo);
 		 pAux=employee_newParametros(&bufId,&bufNombre,&bufHorasTrabajadas,&bufSueldo);
+		 pAux=entidad_newParametros();
 		 if(pAux!=NULL)
 		 {
-			 ll_add(pArrayListEmployee,pAux);
+			 ll_add(EntidadArray,pAux);
 		 }
 	}*/
 
