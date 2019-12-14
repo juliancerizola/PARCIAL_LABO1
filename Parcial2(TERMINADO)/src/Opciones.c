@@ -16,8 +16,9 @@ void opcionesMenu()
 	printf("[2] - Leer Archivo\n");
 	printf("[3] - Ordenar Archivo por IdTipo\n");
 	printf("[4] - Imprimir\n");
-	printf("[5] - Ejecutar Funcion ll_map\n");
+	printf("[5] - Ejecutar Insert ll_map\n");
 	printf("[6] - Crear Archivo y Guardar\n");
+	printf("[7] - Listar archivo filtrado\n");
 	printf("\n");
 }
 int seleccion(int* opcion)

@@ -21,7 +21,7 @@ int controller_loadFromText(char* path , LinkedList* ArrayEntidad)
 	FILE *pArchivo;
 	int retorno=0;
 
-	if((pArchivo=fopen(path,"r"))==NULL)
+	if((pArchivo=fopen(path,"r+"))==NULL)
 	{
 		printf("El archivo no puede ser abierto");
 		retorno=-1;
@@ -132,44 +132,20 @@ int controller_ListEmployee(LinkedList* ArrayEntidad)
     int auxPrecio;
     int auxidTipo;
     char auxOferta[30];
+    char auxTipoDesc[20];
     if(ArrayEntidad!=NULL)
     {
-         for(i=0;i<ll_len(ArrayEntidad);i++)
+    	for(i=0;i<ll_len(ArrayEntidad);i++)
         {
-
             pAux = ll_get(ArrayEntidad,i);
-            auxId = pAux->Id;
             strcpy(auxDesc,pAux->descripcion);
-            auxPrecio = pAux->precio;
-            auxidTipo = pAux->idTipo;
             strcpy(auxOferta,pAux->oferta);
-
-            if(entidad_getId(pAux,&auxId)==0)
-            	printf("%d",auxId);
-            if(entidad_getDesc(pAux,&auxDesc)==0)
-            	printf(" %s",auxDesc);
-            if(entidad_getPrecio(pAux,&auxPrecio)==0)
-            	printf(" %d",auxPrecio);
-            if(entidad_getidTipo(pAux,&auxidTipo)==0)
-            {
-            	if(auxidTipo == 1)
-            		printf(" DESKTOP ");
-            	else
-            		printf(" LAPTOP ");
-            }
-            if(entidad_getOferta(pAux,&auxOferta)==0)
-            	printf(" %s\n",auxOferta);
-
-            /*if(employee_getId(pAux,&auxId)==0)
-                printf("%d",auxId);
-            if(employee_getNombre(pAux,&auxNom)==0)
-                printf(" %s",auxNom);
-
-            if(employee_getHorasTrabajadas(pAux,&auxHs)==0)
-                printf(" %d",auxHs);
-            if(employee_getSueldo(pAux,&auxSueldo)==0)
-                printf(" %d\n",auxSueldo);*/
-
+            entidad_usarGets(pAux,&auxId,&auxDesc,&auxPrecio,&auxidTipo,&auxOferta);
+            if(auxidTipo==1)
+            	strcpy(auxTipoDesc,"DESKTOP");
+            else
+            	strcpy(auxTipoDesc,"LAPTOP");
+            printf("\n%d %s %d %s %s\n",auxId,auxDesc,auxPrecio,auxTipoDesc,auxOferta);
             retorno = 0;
         }
 
@@ -216,51 +192,31 @@ int controller_Map(LinkedList* ArrayEntidad)
  */
 int controller_saveAsText(char* path, LinkedList* ArrayEntidad)
 {
-    int retorno=-1;
+	    FILE *pFile;
+		Entidad *aux;
+		int id;
+		char descrip[100];
+		int precio;
+		int idTipo;
+		char oferta[30];
+		int retorno = -1;
+		int i;
 
-    if(ArrayEntidad!=NULL && path!=NULL)
-    {
-        FILE* pFile;
-        Entidad* auxEnt;
+		pFile = fopen(path, "w+");
+		fprintf(pFile, "ID,Descripcion,Precio,Tipo,Oferta\n");
+		for (i = 0; i < ll_len(ArrayEntidad); i++) {
 
-        int auxId;
-        int auxPrecio;
-        int auxidTipo;
-        char auxDesc[120];
-        char archivo[30];
+			aux = (Entidad*) ll_get(ArrayEntidad, i);
+			strcpy(descrip,aux->descripcion);
+			entidad_usarGets(aux,&id,descrip,&precio,&idTipo,oferta);
+			fprintf(pFile, "%d,%s,%d,%d,%s\n", id, descrip, precio, idTipo,oferta);
+			retorno = 0;
+		}
 
-        pFile=fopen(path,"w+");
-        fprintf(pFile,"id,Descripcion,Precio,idTipo\n");
+		fclose(pFile);
 
-        for(int i=0;i<ll_len(ArrayEntidad);i++)
-        {
-            auxEnt=(Entidad*)ll_get(ArrayEntidad,i);
-        	//auxEnt=ll_get(ArrayEntidad,i);
-            auxId = auxEnt->Id;
-            strcpy(auxDesc,auxEnt->descripcion);
-            auxPrecio = auxEnt->precio;
-            auxidTipo = auxEnt->idTipo;
-
-            entidad_getId(auxEnt,&auxId);
-            entidad_getDesc(auxEnt,auxDesc);
-            entidad_getPrecio(auxEnt,&auxPrecio);
-            entidad_getidTipo(auxEnt,&auxidTipo);
-
-           // printf("%d,%s,%d,%d\n",auxId,auxDesc,auxPrecio,auxidTipo);
-
-
-            /* employee_getId(auxEmp,&auxId);
-            employee_getNombre(auxEmp,auxNombre);
-            employee_getHorasTrabajadas(auxEmp,&auxHoras);
-            employee_getSueldo(auxEmp,&auxSueldo);*/
-
-            fprintf(pFile,"%d,%s,%d,%d\n",auxId,auxDesc,auxPrecio,auxidTipo);
-            retorno=0;
-        }
-        printf("\nArchivo guardado en modo texto correctamente!\n");
-        fclose(pFile);
-    }
-    return retorno;
+		return retorno;
+		return 1;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).

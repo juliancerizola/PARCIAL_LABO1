@@ -25,16 +25,14 @@ int main(void)
 	char nombreArch[30];
 	LinkedList* ArrayEntidad = ll_newLinkedList();
 	LinkedList* DeskTop;
-	//LinkedList* Extra2 = ll_newLinkedList();
 	do
 	{
 		opcionesMenu();
 		seleccion(&opciones);
-		//printf("\nOpcion Elegida: %d\n ",opciones);
 		switch(opciones)
 		{
 			case 1:
-					printf("Ingrese nombre del archivo: ");
+					printf("\nIngrese nombre del archivo: ");
 					scanf("%s",nombreArch);
 					if(nombreArch!=NULL)
 					{
@@ -82,10 +80,8 @@ int main(void)
 			case 5:
 				if(insert==1 && insertA==1)
 				{
-					if(controller_Map(ArrayEntidad)==0)
-						msg(1);
-					else
-						msg(2);
+					ll_map(ArrayEntidad,funCritOferta);
+					msg(1);
 				}
 				else
 					msg(4);
@@ -96,6 +92,7 @@ int main(void)
 					DeskTop = ll_newLinkedList();
 					DeskTop = ll_filter(ArrayEntidad, funCritDesktop);
 					controller_saveAsText("filtado.csv",DeskTop);
+					printf("\nGuardado!\n");
 				}
 				else
 					msg(4);

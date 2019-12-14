@@ -20,9 +20,6 @@ Entidad* entidad_new()
 		ent->precio = 0;
 		ent->idTipo = 0;
 		strcpy(ent->oferta,"");
-		/*strcpy(ent->nombre,"");
-		ent->horasTrabajadas=0;
-		ent->sueldo=0;*/
 
 	}
 	return ent;
@@ -39,12 +36,6 @@ Entidad* entidad_newParametros(char* idStr,char* descStr,char* precioStr, char* 
 	    strcpy(ent->descripcion,descStr);
 	    ent->precio = atoi(precioStr);
 	    ent->idTipo = atoi(idTipStr);
-	    /*strcpy(emp->nombre, nombreStr);
-	    emp->horasTrabajadas=atoi(horasTrabajadasStr);
-	    emp->sueldo=atoi(sueldo);
-	    strncpy(nombreStr,ent->nombre,20)*/
-
-	    //printf("\n%d %s %d %d",ent->Id,ent->descripcion,ent->precio,ent->idTipo);
 	}
 
 	return ent;
@@ -153,8 +144,6 @@ int funCritTipo(void *argumento1, void *argumento2) {
 
 	entidad_getidTipo(arg1,&valor1);
 	entidad_getidTipo(arg2,&valor2);
-	//employee_getHorasTrabajadas(arg1, &valor1);
-	//employee_getHorasTrabajadas(arg2, &horas2);
 
 	if (valor1 < valor2) {
 		retorno = -1;
@@ -187,24 +176,34 @@ int entidad_getOferta(Entidad* this,char* oferta)
 	return 0;
 }
 
+int entidad_usarGets(Entidad* aux,int* id,char descrip[],int* precio,int* idTipo,char oferta[])
+{
+	int retorno = 0;
+	entidad_getId(aux,id);
+	entidad_getDesc(aux,descrip);
+	entidad_getPrecio(aux,precio);
+	entidad_getidTipo(aux,idTipo);
+	entidad_getOferta(aux,oferta);
+	return retorno;
+
+}
+
+
 
 int funCritOferta(void *pElement)
 {
-	Entidad* aux;
-	char oferta1[] = {"SIN DATOS"};
-	char oferta2[] = {"50% DESCUENTO"};
-	//aux=(Entidad*)pElement;
+	Entidad *arg1 = (Entidad*) pElement;
+	int tipo;
+	int retorno = -1;
 
-	int retorno;
-
-	if (aux->idTipo==1){
-		entidad_setOferta(aux,oferta2);
-		//strcpy(aux->oferta,oferta2);
-		retorno = 1;
-	} else if(aux->idTipo==2){
-		entidad_setOferta(aux,oferta1);
-		//strcpy(aux->oferta,oferta1);
-		retorno = 1;
+	entidad_getidTipo(arg1,&tipo);
+	if (tipo==1) {
+		strcpy(arg1->oferta,"50% DESCUENTO");
+		retorno = 0;
+	} else
+	{
+		strcpy(arg1->oferta,"SIN DATOS");
+		retorno = 0;
 	}
 	return retorno;
 }
@@ -212,13 +211,11 @@ int funCritOferta(void *pElement)
 
 int funCritDesktop(void *pElement) {
 	Entidad *arg1 = (Entidad*) pElement;
-
-	int valor;
+	int tipo;
 	int retorno;
 
-	entidad_getidTipo(arg1, &valor);
-
-	if (valor==1) {
+	entidad_getidTipo(arg1,&tipo);
+	if (tipo==1) {
 		retorno = 1;
 	} else {
 		retorno = 0;
